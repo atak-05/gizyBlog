@@ -1,6 +1,7 @@
 from django.contrib import admin
 from blog.models import categoryModel
 from blog.models import textModel
+from blog.models import commentModel
 
 # Register your models here.
 
@@ -13,3 +14,7 @@ class textAdmin(admin.ModelAdmin):
     list_display = ('title', 'createdAtTime','updatedAtTime')
 admin.site.register(textModel, textAdmin) #parametre olarak textAdmini eklemeliyiz.
 
+class commentAdmin(admin.ModelAdmin):
+    search_fields= ('author__username',)
+    list_display = ('comment', 'createdAtTime', 'updatedAtTime')
+admin.site.register(commentModel, commentAdmin)
