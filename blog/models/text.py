@@ -2,6 +2,7 @@ from django.db import models
 from autoslug import AutoSlugField
 from blog.models import categoryModel
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 
 
@@ -9,7 +10,7 @@ from django.contrib.auth.models import User
 class textModel(models.Model):
     image = models.ImageField(upload_to='textImages')
     title = models.CharField(max_length=50)
-    content = models.TextField()
+    content = RichTextField()
     createdAtTime = models.DateTimeField(auto_now_add=True)# bu sayede her oluşturulan yazı için otomatik tarih oluşturulacak..
     updatedAtTime = models.DateTimeField(auto_now=True) #her değiştirildiğinde değiştirildiğindeki tarih olacaktır.
     slug = AutoSlugField(populate_from='title', unique=True)
@@ -22,3 +23,5 @@ class textModel(models.Model):
         verbose_name ='text'
         verbose_name_plural = 'Texts'
         db_table = 'text'
+    def __str__(self):
+        return self.title
