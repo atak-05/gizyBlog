@@ -1,7 +1,7 @@
 from django.db import models
 from autoslug import AutoSlugField
+from account.models import customUserModel #*kendi oluşturduğumuz user modeli kullanıyoruz.
 from blog.models import categoryModel
-from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 
 
@@ -15,7 +15,7 @@ class textModel(models.Model):
     updatedAtTime = models.DateTimeField(auto_now=True) #her değiştirildiğinde değiştirildiğindeki tarih olacaktır.
     slug = AutoSlugField(populate_from='title', unique=True)
     category = models.ManyToManyField(categoryModel,related_name='text')
-    author = models.ForeignKey(User, related_name='texts',on_delete=models.CASCADE)
+    author = models.ForeignKey(customUserModel, related_name='texts',on_delete=models.CASCADE)
     #many_to_many: bir alanı başka bir tablonun birden fazla alan ile ilişkilendiriyor.
     #foreign_keys:bir tabloyu bir başka tablo ile ilişkilendirmemesi sağlıyor.
     
