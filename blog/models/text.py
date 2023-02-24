@@ -3,16 +3,17 @@ from autoslug import AutoSlugField
 from account.models import customUserModel #*kendi oluşturduğumuz user modeli kullanıyoruz.
 from blog.models import categoryModel
 from ckeditor.fields import RichTextField
+from blog.abstractModel import dataAbstractModel
 
 
 
 
-class textModel(models.Model):
+class textModel(dataAbstractModel):
     image = models.ImageField(upload_to='textImages')
     title = models.CharField(max_length=50)
     content = RichTextField()
-    createdAtTime = models.DateTimeField(auto_now_add=True)# bu sayede her oluşturulan yazı için otomatik tarih oluşturulacak..
-    updatedAtTime = models.DateTimeField(auto_now=True) #her değiştirildiğinde değiştirildiğindeki tarih olacaktır.
+    # createdAtTime = models.DateTimeField(auto_now_add=True)# bu sayede her oluşturulan yazı için otomatik tarih oluşturulacak..
+    # updatedAtTime = models.DateTimeField(auto_now=True) #her değiştirildiğinde değiştirildiğindeki tarih olacaktır.
     slug = AutoSlugField(populate_from='title', unique=True)
     category = models.ManyToManyField(categoryModel,related_name='text')
     author = models.ForeignKey(customUserModel, related_name='texts',on_delete=models.CASCADE)
