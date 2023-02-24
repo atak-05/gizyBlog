@@ -10,18 +10,19 @@ admin.site.register(categoryModel)
 
 
 # Admini customize etmek için :
+@admin.register(textModel)
 class textAdmin(admin.ModelAdmin):
     search_fields = ('title', 'content') #
     list_display = ('title', 'createdAtTime','updatedAtTime')
-admin.site.register(textModel, textAdmin) #parametre olarak textAdmini eklemeliyiz.
-
+# admin.site.register(textModel, textAdmin) #*parametre olarak textAdmini eklemeliyiz.
+@admin.register(commentModel)
 class commentAdmin(admin.ModelAdmin):
     search_fields= ('author__username',)
     list_display = ('comment', 'createdAtTime', 'updatedAtTime')
-admin.site.register(commentModel, commentAdmin)
-
+# admin.site.register(commentModel, commentAdmin)
+@admin.register(contactModel)
 class contactAdmin(admin.ModelAdmin):
-    search_fields = ('email')
+    search_fields = ('email',)
     list_display = ('email','createdAtTime')
 
-admin.site.register(contactModel)
+# admin.site.register(contactModel)
