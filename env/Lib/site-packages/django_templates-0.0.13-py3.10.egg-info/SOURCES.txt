@@ -1,0 +1,10 @@
+README.md
+__init__.py
+setup.cfg
+setup.py
+django_templates/__init__.py
+django_templates/attribute.py
+django_templates.egg-info/PKG-INFO
+django_templates.egg-info/SOURCES.txt
+django_templates.egg-info/dependency_links.txt
+django_templates.egg-info/top_level.txt
