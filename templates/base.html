@@ -1,0 +1,5 @@
+
+<! viewdan gelen istegin cevabı bu sayfada > 
+
+{% load static %} {% include "components/navbar.html" %}
+{% block content %} {%endblock%}{% if request.user.is_authenticated %} {% include 'components/sidebar.html' %} {% endif %}{% include "components/footer.html" %}
