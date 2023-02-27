@@ -121,13 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-<<<<<<< HEAD
+
 STATICFILES_DIRS = [
-    BASE_DIR / 'static/'
-=======
-STATICFILES_DIRS = [ #*static dosyalarının yolunu göstermek için yaptığımız bir şeydir.
-    BASE_DIR/ "static/"
->>>>>>> 803a7374393867d913d51295abb57cd2fba10dbb
+    BASE_DIR/ 'static/'
 ]
 
 # Default primary key field type
