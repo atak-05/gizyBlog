@@ -4,7 +4,7 @@ from blog.views import (contact,
 
 # * config/urls içerisinden gelen istediğin cevabı burada blog için
 urlpatterns = [
-    path('', home),
-    path('contact' , contact),
+    path('', home, name='home'),
+    path('contact' , contact, name='contact'),
 ]
     
