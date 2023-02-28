@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 def home(request):
     texts = textModel.objects.order_by('-id')
     page = request.GET.get('page')
-    paginator = Paginator(texts, 1)
+    paginator = Paginator(texts, 3)
     return render(request , 'pages/home.html', context={
         'texts': paginator.get_page(page)
     })
