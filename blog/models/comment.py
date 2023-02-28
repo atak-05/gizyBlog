@@ -1,5 +1,5 @@
 from django.db import models
-from  account.models import customUserModel #*kendi oluşturduğumuz user modelini kullanıyoruz..
+from account.models import customUserModel #*kendi oluşturduğumuz user modelini kullanıyoruz..
 from blog.models import textModel
 from blog.abstractModel import dataAbstractModel
 

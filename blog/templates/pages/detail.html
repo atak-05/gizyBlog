@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %} {{text.title}} {% endblock %} 
-
+{% load static %}
 
 {% block content%} 
   <div class="card mb-3">
@@ -20,5 +20,26 @@
         </div>
       </div>
     </div>
+    <h5 class = "mt-2">Comments</h5>
+    {%for comment in comments %}
+      <div class="card mt-1">
+        <div class="card-body" style = "display:flex;flex-direction: row;">
+          <div class="me-3">
+            {% if comment.author.avatar %}
+              <img src="{{comment.author.avatar.url}}" class="rounded" class="pt-1" width="70px" height="70px">
+            {%else%}
+              <img src="{% static 'img/no-avatar.png' %}" class="rounded" class="pt-1" width="70px" height="70px">
+            {%endif%}
+          </div>
+          <div>
+            <h5 class="card-title"> {{comment.author.username}} </h5>
+            <p class="card-text">{{comment.comment}} </p>
+          </div>
+        </div>
+      </div>
+     {% empty %}
+     <p>No comment found</p> 
+    {% endfor %}
   </div>
+  
 {% endblock %}
