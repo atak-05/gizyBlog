@@ -25,8 +25,9 @@
         </li>
         {% endfor %}
       </ul>
-      <form class="d-flex" role="search">
+      <form action= '{% url 'home' %}' class="d-flex" role="search">
         <input
+          name= 'query' 
           class="form-control me-2"
           type="search"
           placeholder="Search"
