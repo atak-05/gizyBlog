@@ -15,7 +15,7 @@ class textModel(dataAbstractModel):
     # createdAtTime = models.DateTimeField(auto_now_add=True)# bu sayede her oluşturulan yazı için otomatik tarih oluşturulacak..
     # updatedAtTime = models.DateTimeField(auto_now=True) #her değiştirildiğinde değiştirildiğindeki tarih olacaktır.
     slug = AutoSlugField(populate_from='title', unique=True)
-    category = models.ManyToManyField(categoryModel,related_name='text')
+    category = models.ManyToManyField(categoryModel, related_name='text')
     author = models.ForeignKey(customUserModel, related_name='texts',on_delete=models.CASCADE)
     #many_to_many: bir alanı başka bir tablonun birden fazla alan ile ilişkilendiriyor.
     #foreign_keys:bir tabloyu bir başka tablo ile ilişkilendirmemesi sağlıyor.
