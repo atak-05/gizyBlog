@@ -1,13 +1,17 @@
 from django.shortcuts import render
 from blog.models import textModel
+from django.core.paginator import Paginator
 #* urlsden gelen istediğin cevabı bu sayfada 
 
 #* __init__.py sayfasına dahil etmeyi unutma!
 
 def home(request):
-    texts = textModel.objects.all()
+    texts = textModel.objects.order_by('-id')
+    page = request.GET.get('page')
+    paginator = Paginator(texts, 1)
     return render(request , 'pages/home.html', context={
-        'texts': texts
+        'texts': paginator.get_page(page)
     })
+    
 
 
