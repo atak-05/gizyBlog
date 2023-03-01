@@ -20,3 +20,4 @@ def contact(request):
         'form': form
     }
     return render(request , 'pages/contact.html', context = context)
+
