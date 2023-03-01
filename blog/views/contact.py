@@ -9,11 +9,7 @@ def contact(request):
         form = contactForm(request.POST)
         print(form)
         if form.is_valid():
-            contact = contactModel()
-            contact.email = form.cleaned_data['email']
-            contact.name_lastname = form.cleaned_data['name_lastname']
-            contact.message = form.cleaned_data['message']
-            contact.save()
+            form.save()
             return redirect('home')
 
     context = {

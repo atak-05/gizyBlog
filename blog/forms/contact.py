@@ -1,7 +1,8 @@
 from django import forms
+from blog.models import contactModel
 
-
-class contactForm(forms.Form):
-    email = forms.EmailField(label= 'E-mail', max_length=100)
-    name_lastname = forms.CharField(label='Name Lastname',max_length=30)
-    message = forms.CharField(label='Your Message' ,widget = forms.Textarea) #widgetlar <htmltaglaridir>
+class contactForm(forms.ModelForm):
+    class Meta:
+        model = contactModel
+        fields = ('name_lastname', 'email','message')
+        
