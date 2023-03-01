@@ -10,7 +10,7 @@
 {% block content %}
     <form method="POST" >
       {% csrf_token %} 
-      {{form}}
-      <input type ="submit" value = "Send "/>
+      {{form|crispy}}
+      <input type ="submit" class="btn btn-dark mb-3" value = "Send "/>
     </form>
 {% endblock %}
