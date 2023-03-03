@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, redirect
 
 @login_required(login_url='/')
 def deleteComment(request,id):
-    comment =  get_object_or_404(commentModel, id=id)
+    comment =  get_object_or_404(commentModel, id=comment.id)
     if comment.author == request.user or comment.text.author == request.user:
         comment.delete()
         return redirect('detail', slug= comment.text.slug)
