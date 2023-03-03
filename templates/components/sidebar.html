@@ -3,7 +3,6 @@
       <div class="card-header">
         Menu
       </div>
-      {% if request.user.is_authenticated %}
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <a href = '{% url 'change-profil' %}'>
@@ -26,8 +25,5 @@
           Exit </a>
         </li>
       </ul>
-      {% else %}
-      Login formu gelecek
-      {% endif %}
     </div>
   </div>

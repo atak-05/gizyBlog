@@ -111,6 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
+# dili türkçe olarak değiştirebilirz. ('tr')
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -144,3 +146,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR ,'media/')
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+#Kullanıcı login işleminden sonra yönlendirileceği sayfa
+LOGIN_REDIRECT_URL = '/'
