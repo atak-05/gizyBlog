@@ -16,10 +16,15 @@
             <small class="text-muted"
               >before {{text.updatedAtTime|timesince}}
             </small>
+            {% if request.user == text.author %}
+             <p>
+                <a class= "btn btn-dark" href= "{% url 'update-text' slug=text.slug %}">
+                Edit
+                </a>
+              </p>  
+            {% endif %}
             <p>
-              <a href= "{% url 'update-text' slug=text.slug %}">
-              Edit
-              </a>  
+              
             </p>
           </p>
         </div>
