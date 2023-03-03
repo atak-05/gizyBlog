@@ -45,16 +45,7 @@
     {% else %}
       <p>You must login for add a comment </p>
     {% endif%}
-    <!--  django message framework uses -->
-
-    {% if messages %}
-    <div class="alert alert-success" role="alert">
-      {% for message in messages %}
-            {{ message }}
-      {% endfor %}
-    </div>
-    {% endif %}
-    <!--  django message framework uses -->
+    {% include 'components/message.html' %}
     {%for comment in comments %}
       <div class="card mt-1">
         <div class="card-body" style = "display:flex;flex-direction: row;">
