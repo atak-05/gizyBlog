@@ -6,3 +6,4 @@ from .detail import detail
 from .addText import addText
 from .updateText import updateText
 from .deleteText import deleteText
+from .deleteComment import deleteComment
