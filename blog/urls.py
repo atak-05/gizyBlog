@@ -5,7 +5,8 @@ from blog.views import (contact,
                         mytext,
                         detail,
                         addText,
-                        updateText
+                        updateText,
+                        deleteText,
                         )
 
 # * config/urls içerisinden gelen istediğin cevabı burada blog için
@@ -17,5 +18,6 @@ urlpatterns = [
     path('detail/<slug:slug>', detail, name='detail'),
     path('add-text',addText, name='addText'),
     path('update-text/<slug:slug>', updateText, name='update-text'),
+    path('delete-text/<slug:slug>', deleteText, name='delete-text'),
 ]
     

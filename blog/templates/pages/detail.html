@@ -21,6 +21,9 @@
                 <a class= "btn btn-dark" href= "{% url 'update-text' slug=text.slug %}">
                 Edit
                 </a>
+                <a class= "btn btn-danger" href= "{% url 'delete-text' slug=text.slug %}">
+                  Delete
+                </a>
               </p>  
             {% endif %}
             <p>
