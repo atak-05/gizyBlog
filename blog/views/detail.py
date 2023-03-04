@@ -1,26 +1,34 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from blog.models import textModel
 from blog.forms import commentAddForm
-def detail(request,slug):
-    text = get_object_or_404(textModel, slug=slug)
-    print(text)
-    comments = text.commentS.all()
+from django.views import View
+from django.contrib import messages
+
+
+class detailView(View):
+    http_method_names= ['get', 'post']
+    commentAddForm_ = commentAddForm
     
-    if request.method == 'POST':
-        addComment = commentAddForm(data=request.POST)
-        if addComment.is_valid():
-            comment = addComment.save(commit=False)
-            comment.author =request.user
-            comment.text = text
-            comment.save()       
-        
-    addComment = commentAddForm()
-    
-    
-    return render(request,'pages/detail.html', context={
+    def get(self, request,slug):
+        text = get_object_or_404(textModel, slug=slug)
+        comments = text.commentS.all()
+        return render(request,'pages/detail.html', context={
         'text': text,
         'comments': comments,
-        'addComment': addComment,
+        'addComment': self.commentAddForm_,
     })
-    
+        
+    def post(self, request,slug):
+        text = get_object_or_404(textModel, slug=slug)
+        commentAddForm_ = self.commentAddForm_(data=request.POST)
+        if commentAddForm_.is_valid():
+            comment = commentAddForm_.save(commit=False)
+            comment.author =request.user
+            comment.text = text
+            comment.save()   
+            messages.success(request, "Comment added successfully")
+        return redirect('detail', slug=slug)
+ 
+
+
     

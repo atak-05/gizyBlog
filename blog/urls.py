@@ -3,14 +3,13 @@ from blog.views import (contact,
                         home,
                         category,
                         mytext,
-                        detail,
+                        detailView,
                         addText,
                         updateText,
                         deleteText,
                         deleteComment
                         )
 from django.views.generic import TemplateView, RedirectView
-
 # * config/urls içerisinden gelen istediğin cevabı burada blog için
 urlpatterns = [
     path('redirect', RedirectView.as_view(
@@ -23,7 +22,7 @@ urlpatterns = [
     path('contact' , contact, name='contact'),
     path('category/<slug:categorySlug>', category, name='category'),
     path('mytext', mytext, name='mytext'),
-    path('detail/<slug:slug>', detail, name='detail'),
+    path('detail/<slug:slug>', detailView.as_view(), name='detail'),
     path('add-text',addText, name='addText'),
     path('update-text/<slug:slug>', updateText, name='update-text'),
     path('delete-text/<slug:slug>', deleteText, name='delete-text'),
