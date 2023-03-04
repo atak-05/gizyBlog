@@ -9,10 +9,14 @@ from blog.views import (contact,
                         deleteText,
                         deleteComment
                         )
+from django.views.generic import TemplateView
 
 # * config/urls içerisinden gelen istediğin cevabı burada blog için
 urlpatterns = [
     path('', home, name='home'),
+    path('about', TemplateView.as_view(
+        template_name='pages/about.html'
+        ) , name='about'),
     path('contact' , contact, name='contact'),
     path('category/<slug:categorySlug>', category, name='category'),
     path('mytext', mytext, name='mytext'),
