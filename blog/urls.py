@@ -9,10 +9,13 @@ from blog.views import (contact,
                         deleteText,
                         deleteComment
                         )
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 
 # * config/urls içerisinden gelen istediğin cevabı burada blog için
 urlpatterns = [
+    path('redirect', RedirectView.as_view(
+        url = 'http://www.google.com'
+        ), name='redirect'),
     path('', home, name='home'),
     path('about', TemplateView.as_view(
         template_name='pages/about.html'
