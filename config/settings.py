@@ -149,3 +149,5 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 #Kullanıcı login işleminden sonra yönlendirileceği sayfa
 LOGIN_REDIRECT_URL = '/'
+
+CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'

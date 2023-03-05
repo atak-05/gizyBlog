@@ -3,7 +3,7 @@ from .home import home
 from .category import categoryListView
 from .mytext import mytext
 from .detail import detailView
-from .addText import addText
+from .addText import addTextCreateView
 from .updateText import updateText
 from .deleteText import deleteTextDeleteView
 from .deleteComment import deleteComment

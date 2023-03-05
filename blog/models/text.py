@@ -7,7 +7,6 @@ from blog.abstractModel import dataAbstractModel
 
 
 
-
 class textModel(dataAbstractModel):
     image = models.ImageField(upload_to='textImages')
     title = models.CharField(max_length=50)
