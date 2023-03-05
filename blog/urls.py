@@ -1,7 +1,7 @@
 from django.urls import path
 from blog.views import (contact,
                         home,
-                        category,
+                        categoryListView,
                         mytext,
                         detailView,
                         addText,
@@ -20,7 +20,7 @@ urlpatterns = [
         template_name='pages/about.html'
         ) , name='about'),
     path('contact' , contact, name='contact'),
-    path('category/<slug:categorySlug>', category, name='category'),
+    path('category/<slug:categorySlug>', categoryListView.as_view(), name='category'),
     path('mytext', mytext, name='mytext'),
     path('detail/<slug:slug>', detailView.as_view(), name='detail'),
     path('add-text',addText, name='addText'),

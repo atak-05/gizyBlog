@@ -31,9 +31,10 @@
   {% endfor %}
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-end">
-      {% if texts.has_previous %}
+      <!--"page_obj" bir nesnedir bunu category viewda belirledik.Ve buraya gönderdik bunu kullanmadan önce "text" olarak belirtiyorduk -->
+      {% if page_obj.has_previous %}
       <li class="page-item">
-        <a class="page-link" href='?page={{texts.previous_page_number}}' tabindex="-1" aria-disabled="true" >Previous</a>
+        <a class="page-link" href='?page={{page_obj.previous_page_number}}' tabindex="-1" aria-disabled="true" >Previous</a>
       </li>
       {%else%}
       <li class="page-item disabled">
@@ -42,14 +43,14 @@
       </li>
       {% endif %}
       <li class="page-item">
-        <a class="page-link" href="#"> {{texts.number}} </a>
+        <a class="page-link" href="#"> {{page_obj.number}} </a>
       </li>
-      {% if texts.has_next %}
+      {% if page_obj.has_next %}
       <li class="page-item">
-        <a class="page-link" href='?page={{texts.next_page_number}}'>Next</a>
+        <a class="page-link" href='?page={{page_obj.next_page_number}}'>Next</a>
       </li>
       <li class="page-item">
-        <a class="page-link" href='?page= {{texts.paginator.num_pages}}''>End</a>
+        <a class="page-link" href='?page={{page_obj.paginator.num_pages}}'>End</a>
       </li>
       {% endif %}
     </ul>
