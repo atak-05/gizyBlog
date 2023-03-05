@@ -6,7 +6,7 @@ from blog.views import (contact,
                         detailView,
                         addText,
                         updateText,
-                        deleteText,
+                        deleteTextDeleteView,
                         deleteComment
                         )
 from django.views.generic import TemplateView, RedirectView
@@ -25,7 +25,7 @@ urlpatterns = [
     path('detail/<slug:slug>', detailView.as_view(), name='detail'),
     path('add-text',addText, name='addText'),
     path('update-text/<slug:slug>', updateText, name='update-text'),
-    path('delete-text/<slug:slug>', deleteText, name='delete-text'),
+    path('delete-text/<slug:slug>', deleteTextDeleteView.as_view(), name='delete-text'),
     path('delete-comment/<int:id>', deleteComment, name='delete-comment'),
 
 ]
