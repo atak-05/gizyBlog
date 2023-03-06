@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from blog.forms import contactForm
 from blog.models import contactModel
-
+from django.views.generic import FormView
 #* __init__.py sayfasına dahil etmeyi unutma!
-def contact(request):
-    form = contactForm(
+# def contact(request):
+#     form = contactForm(
         # data= { #bunda ise bilgiler otomatik olarak gösteriliyor ama 
         # -onu gönderemiyor. Kendi bilgilerini doldurması gerekiyor.
         #     'name_lastname': 'Adınız ve Soyadınız',
@@ -18,16 +18,27 @@ def contact(request):
         #     'email' : 'E-mail',
         #     'message' : 'Mesajım.',
         # }
-    )
-    if request.method == 'POST':
-        form = contactForm(request.POST)
-        print(form)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
+    # )
+    # if request.method == 'POST':
+    #     form = contactForm(request.POST)
+    #     print(form)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('home')
 
-    context = {
-        'form': form
-    }
-    return render(request , 'pages/contact.html', context = context)
+    # context = {
+    #     'form': form
+    # }
+    # return render(request , 'pages/contact.html', context = context)
 
+class contactFormView(FormView):
+    template_name = 'pages/contact.html'
+    form_class = contactForm
+    success_url = '/contact/send-email'
+    
+    def form_valid(self, form) :
+        form.save()
+        return redirect(self.success_url)
+        # aynı şey
+        # return super().form_valid(form)
+    

@@ -1,5 +1,5 @@
 from django.urls import path
-from blog.views import (contact,
+from blog.views import (contactFormView,
                         home,
                         categoryListView,
                         mytext,
@@ -19,7 +19,7 @@ urlpatterns = [
     path('about', TemplateView.as_view(
         template_name='pages/about.html'
         ) , name='about'),
-    path('contact' , contact, name='contact'),
+    path('contact' , contactFormView.as_view(), name='contact'),
     path('category/<slug:categorySlug>', categoryListView.as_view(), name='category'),
     path('mytext', mytext, name='mytext'),
     path('detail/<slug:slug>', detailView.as_view(), name='detail'),
