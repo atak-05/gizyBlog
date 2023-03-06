@@ -34,7 +34,7 @@ from django.views.generic import FormView
 class contactFormView(FormView):
     template_name = 'pages/contact.html'
     form_class = contactForm
-    success_url = '/contact/send-email'
+    success_url = 'send-email'
     
     def form_valid(self, form) :
         form.save()

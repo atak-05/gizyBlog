@@ -19,6 +19,9 @@ urlpatterns = [
     path('about', TemplateView.as_view(
         template_name='pages/about.html'
         ) , name='about'),
+    path('send-email', TemplateView.as_view(
+        template_name='pages/send-email.html'
+        ) , name='send-email'),
     path('contact' , contactFormView.as_view(), name='contact'),
     path('category/<slug:categorySlug>', categoryListView.as_view(), name='category'),
     path('mytext', mytext, name='mytext'),
