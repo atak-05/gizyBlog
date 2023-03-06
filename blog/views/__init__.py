@@ -4,6 +4,6 @@ from .category import categoryListView
 from .mytext import mytext
 from .detail import detailView
 from .addText import addTextCreateView
-from .updateText import updateText
+from .updateText import updateTextUpdateView
 from .deleteText import deleteTextDeleteView
 from .deleteComment import deleteComment

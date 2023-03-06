@@ -5,7 +5,7 @@ from blog.views import (contact,
                         mytext,
                         detailView,
                         addTextCreateView,
-                        updateText,
+                        updateTextUpdateView,
                         deleteTextDeleteView,
                         deleteComment
                         )
@@ -24,7 +24,7 @@ urlpatterns = [
     path('mytext', mytext, name='mytext'),
     path('detail/<slug:slug>', detailView.as_view(), name='detail'),
     path('add-text',addTextCreateView.as_view(), name='addText'),
-    path('update-text/<slug:slug>', updateText, name='update-text'),
+    path('update-text/<slug:slug>', updateTextUpdateView.as_view(), name='update-text'),
     path('delete-text/<slug:slug>', deleteTextDeleteView.as_view(), name='delete-text'),
     path('delete-comment/<int:id>', deleteComment, name='delete-comment'),
 
