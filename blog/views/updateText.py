@@ -3,10 +3,13 @@ from blog.forms import textUpdateForm
 from blog.models import textModel
 from django.contrib.auth.decorators import login_required
 from django.views.generic import UpdateView
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class updateTextUpdateView(UpdateView):
+
+class updateTextUpdateView(LoginRequiredMixin,UpdateView):
+    login_url = reverse_lazy('login')
     template_name= 'pages/updateText.html'
     fields = ('title', 'content', 'image', 'category')
     def get_object(self):

@@ -3,10 +3,12 @@ from blog.forms import textAddForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
 from blog.models import textModel
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 # m2m datası farklı bir yerde olduğu için onuda 
 # -bu şekilde kayıt ediyoruz.
-class addTextCreateView(CreateView):
+class addTextCreateView(LoginRequiredMixin,CreateView):
+    login_url = reverse_lazy('login')
     template_name='pages/addText.html'
     model = textModel
     fields = ['title','content','image','category']
