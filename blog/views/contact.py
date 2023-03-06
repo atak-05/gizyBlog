@@ -38,6 +38,8 @@ class contactFormView(FormView):
     
     def form_valid(self, form) :
         form.save()
+        form.send_email(message=form.cleaned_data.get('message'))
+        
         # return redirect(self.success_url)
         # aynı şey
         return super().form_valid(form)

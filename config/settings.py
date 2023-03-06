@@ -20,9 +20,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j!%0cqt0mcge@$^l$zkk$@$&nl+noeh^tnv4h_%yz*dpwqw4i!'
+import environ
 
+env = environ.Env()
+environ.Env.read_env()
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER ='gizem.cirikka@outlook.com' 
+EMAIL_HOST_PASSWORD =os.environ.get('EMAIL_PASSWORD', 'default')
+DEFAULT_FROM_EMAIL = 'gizem.cirikka@outlook.com'
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = env('SECRET_KEY')
+DEFAULT_FROM_EMAIL = 'gizem.cirikka@outlook.com'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
