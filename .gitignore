@@ -4,4 +4,5 @@ db.sqlite3
 textImages
 media
 .env
-.prod.sqlite3
+prod.sqlite3
+logs

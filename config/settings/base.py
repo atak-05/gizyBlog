@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import environ
 from pathlib import Path
 import os
 
@@ -20,23 +21,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-import environ
 
 env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER ='gizem.cirikka@outlook.com' 
-EMAIL_HOST_PASSWORD =os.environ.get('EMAIL_PASSWORD', 'default')
+EMAIL_HOST_USER = 'gizem.cirikka@outlook.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD', 'default')
 DEFAULT_FROM_EMAIL = 'gizem.cirikka@outlook.com'
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 DEFAULT_FROM_EMAIL = 'gizem.cirikka@outlook.com'
 # SECURITY WARNING: don't run with debug turned on in production!
-
-
 
 
 # Application definition
@@ -50,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'account',
-    #third party
+    # third party
     'ckeditor',
     'crispy_forms',
     'crispy_bootstrap5',
@@ -88,12 +86,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
-
-
 
 
 # Internationalization
@@ -116,26 +110,54 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
-    
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#*kendi oluşturduğumuz user modelini(tablosunu)kullanmak için bunu yaptık.
-AUTH_USER_MODEL ='account.customUserModel'
+# *kendi oluşturduğumuz user modelini(tablosunu)kullanmak için bunu yaptık.
+AUTH_USER_MODEL = 'account.customUserModel'
 
-#* media dosyalarına erişmek için yolunu belirtmeliyiz.
+# * media dosyalarına erişmek için yolunu belirtmeliyiz.
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR ,'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-#Kullanıcı login işleminden sonra yönlendirileceği sayfa
+# Kullanıcı login işleminden sonra yönlendirileceği sayfa
 LOGIN_REDIRECT_URL = '/'
 
 CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters':{
+        'simple_expression':{
+            'format': '{asctime}{levelname}{message}{name}',
+            'style': '{'
+        }
+    },
+    'handlers': {
+        'console':{
+            'class': 'logging.StreamHandler',  
+        },
+        'file':{
+            'class': 'logging.FileHandler',
+            'filename': 'logs/how_read_text.log',
+            'formatter' : 'simple_expression'
+        }
+    },
+    'loggers': {
+        'how_read_text': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+        }
+    }
+
+}

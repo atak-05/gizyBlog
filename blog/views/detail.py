@@ -3,7 +3,9 @@ from blog.models import textModel
 from blog.forms import commentAddForm
 from django.views import View
 from django.contrib import messages
+import logging 
 
+logger = logging.getLogger('how_read_text')
 
 class detailView(View):
     http_method_names= ['get', 'post']
@@ -11,6 +13,8 @@ class detailView(View):
     
     def get(self, request,slug):
         text = get_object_or_404(textModel, slug=slug)
+        if request.user.is_authenticated:
+            logger.info( text.title+" " + "texti "+ request.user.username+" tarafından okundu!  ")
         comments = text.commentS.all()
         return render(request,'pages/detail.html', context={
         'text': text,
